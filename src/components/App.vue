@@ -1,13 +1,16 @@
 <template>
 	<div>
-		<div v-for="day in days">{{ day.toDate() }}</div>
+		<div v-for="week in weeks">
+			Week
+			<div v-for="day in week">{{ day }}</div>
+		</div>
 	</div>
 </template>
 <script>
 	export default {
 		data() {
 			return {
-				month: 5,
+				month: 2,
 				year: 2017
 			}
 		},
@@ -38,6 +41,15 @@
 				}
 
 				return days
+			},
+			weeks() {
+				let weeks = []
+				
+				for(let i = 0; i < this.days.length; i + 7) {
+					weeks.push(this.days.splice(i, i+7))
+				}
+
+				return weeks
 			}
 		}
 	}
