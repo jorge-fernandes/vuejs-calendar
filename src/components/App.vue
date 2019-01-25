@@ -45,8 +45,8 @@
 			weeks() {
 				let weeks = []
 				
-				for(let i = 0; i < this.days.length; i + 7) {
-					weeks.push(this.days.splice(i, i+7))
+				for(let i = 0; i < this.days.length; i += 7) {
+					weeks.push(this.days.slice(i, i+7))
 				}
 
 				return weeks
