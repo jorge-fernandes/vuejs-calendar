@@ -8,7 +8,9 @@ moment.tz.setDefault('UTC')
 export default new Vuex.Store({
   	state: {
   		currentYear: parseInt(moment().format('Y')),
-  		currentMonth: parseInt(moment().format('M'))
+  		currentMonth: parseInt(moment().format('M')),
+  		eventFormPosX: 0,
+  		eventFormPosY: 0
   	},
   	mutations: {
   		setCurrentMonth(state, payload) {
@@ -16,6 +18,10 @@ export default new Vuex.Store({
   		},
   		setCurrentYear(state, payload) {
   			state.currentYear = payload
+  		},
+  		eventFormPos(state, payload) {
+  			state.eventFormPosY = payload.y
+  			state.eventFormPosX = payload.x
   		}
   	}
 })
