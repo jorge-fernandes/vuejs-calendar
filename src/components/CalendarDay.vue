@@ -10,7 +10,8 @@
 			classObject() {
 				return {
 					day: true,
-					today: this.day.isSame(this.$moment(), 'day')
+					today: this.day.isSame(this.$moment(), 'day'),
+					past: this.day.isBefore(this.$moment(), 'day')
 				}
 			}
 		}
