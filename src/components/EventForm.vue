@@ -2,7 +2,7 @@
 	<div id="event-form" :class="{ active }" :style="{ top, left }">
 		<h4>Add an Event</h4>
 		<div class="text">
-			<input type="text" v-model="description" placeholder="Boardgame Night">
+			<input v-focus type="text" v-model="description" placeholder="Boardgame Night" @keyup.enter="create">
 		</div>
 		<div class="buttons">
 			<button @click="create">Create</button>
@@ -38,6 +38,13 @@
 			},
 			left() {
 				return`${this.$store.state.eventFormPosX}px`
+			}
+		},
+		directives: {
+			focus: {
+				update(el) {
+					el.focus()
+				}
 			}
 		}
 	}
