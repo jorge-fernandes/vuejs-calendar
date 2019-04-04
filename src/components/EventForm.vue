@@ -1,6 +1,7 @@
 <template>
 	<div id="event-form" :class="{ active }" :style="{ top, left }">
 		<h4>Add an Event</h4>
+		<p>{{ date ? date.format('dddd, MMM Do') : '' }}</p>
 		<div class="text">
 			<input v-focus type="text" v-model="description" placeholder="Boardgame Night" @keyup.enter="create">
 		</div>
@@ -38,6 +39,9 @@
 			},
 			left() {
 				return`${this.$store.state.eventFormPosX}px`
+			},
+			date() {
+				return this.$store.state.eventFormDate
 			}
 		},
 		directives: {
