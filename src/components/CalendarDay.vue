@@ -30,6 +30,7 @@
 					x: event.clientX,
 					y: event.clientY
 				})
+				this.$store.commit('eventFormDate', this.day)
 			}
 		}
 	}
