@@ -11,7 +11,12 @@ export default new Vuex.Store({
   		currentMonth: parseInt(moment().format('M')),
   		eventFormPosX: 0,
   		eventFormPosY: 0,
-  		eventFormActive: false
+  		eventFormActive: false,
+      events: [
+        { description: 'Mock event 1', date: moment() },
+        { description: 'Mock event 2', date: moment().add(-2, 'days') },
+        { description: 'Mock event 3', date: moment().add(2, 'days') },
+      ]
   	},
   	mutations: {
   		setCurrentMonth(state, payload) {
