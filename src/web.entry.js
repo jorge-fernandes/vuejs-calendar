@@ -9,11 +9,12 @@ Object.defineProperty(Vue.prototype, '$moment', { get() { return this.$root.mome
 
 import App from './components/App.vue'
 
-let events = [
-	  { description: 'Mock event 1', date: moment() },
-	  { description: 'Mock event 2', date: moment().add(-2, 'days') },
-	  { description: 'Mock event 3', date: moment().add(2, 'days') },
-	]
+let events = window.__INITIAL_STATE__.map(event =>{
+	return {
+		description: event.description,
+		date: moment(event.date)
+	}
+})
 let initialState = Object.assign({}, store.state, { events })
 store.replaceState(initialState)
 

@@ -11,6 +11,14 @@
     <div id="app">
     	<app></app>
 	</div>
+	<script type="text/javascript">
+		var currentDate = new Date();
+		var __INITIAL_STATE__ = [
+		  { description: 'Mock event 1', date: currentDate.toISOString() },
+		  { description: 'Mock event 2', date: new Date(new Date().setDate(currentDate.getDate() + 1)).toISOString() },
+		  { description: 'Mock event 3', date: new Date(new Date().setDate(currentDate.getDate() + 2)).toISOString() }
+		];
+	</script>
     <script src="/dist/web.bundle.js"></script>
 </body>
 </html>
