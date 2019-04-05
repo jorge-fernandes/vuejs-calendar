@@ -6,15 +6,28 @@ const path = require('path');
 const fs = require('fs');
 const http = require('http');
 
+const moment = require('moment-timezone')
+moment.tz.setDefault('UTC')
+
+const serialize = require('serialize-javascript')
+
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
+let events = [{
+	description: 'Today Dummy Event',
+	date: moment()
+}, {
+	description: 'Tomorrow Dummy Event',
+	date: moment().add(1, 'days')
+}, {
+	description: '2 Days from now Dummy Event',
+	date: moment().add(2, 'days')
+}]
 app.get('/', (req, res) => {
   let template = fs.readFileSync(path.resolve('./index.html'), 'utf-8');
-  res.send(template);
-
+  let contentMarker = '<!-- APP -->'
+  res.send(template.replace(contentMarker, `<script>var __INITIAL_STATE__ = ${ serialize(events) }</script>`));
 });
-
-let events = []
 
 app.use(require('body-parser').json())
 app.post('/add_event', (req, res) => {
