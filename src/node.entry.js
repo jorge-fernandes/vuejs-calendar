@@ -1,4 +1,4 @@
-import App from './components/App.vue'
+import VueCalendar from './entry'
 
 export default function() {
 	return VueCalendar([])
