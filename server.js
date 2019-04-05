@@ -33,13 +33,13 @@ app.get('/', (req, res) => {
   	renderer.renderToString({}, (err, html) => {
   		if(err) {
   			console.log(err)
-  		} else {
-  			console.log(html)
+  		} else {	
+  			res.send(template.replace(contentMarker, `<script>var __INITIAL_STATE__ = ${ serialize(events) }</script>${ html }`));
   		}
   	})
+  } else {
+  	res.send('<p>Awaiting compilation...</p>')
   }
-
-  res.send(template.replace(contentMarker, `<script>var __INITIAL_STATE__ = ${ serialize(events) }</script>`));
 });
 
 app.use(require('body-parser').json())
